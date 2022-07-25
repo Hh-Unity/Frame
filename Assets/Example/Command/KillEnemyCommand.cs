@@ -10,6 +10,9 @@ namespace ShootingEditor2D
         protected override void OnExecute()
         {
             this.GetSystem<IStateSystem>().killCount.Value++;
+            int randomIndex = Random.Range(0, 100);
+            if (randomIndex < 80)
+                this.GetSystem<IGunSystem>().CurrentGun.BulletCount.Value += Random.Range(1, 4);
         }
     }
 

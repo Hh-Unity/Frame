@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ShootingEditor2D
 {
@@ -33,7 +34,10 @@ namespace ShootingEditor2D
             Vector2 btnPos = new Vector2(Screen.width - btnWidth, Screen.height - btnHeight + 300) * 0.5f;
             Vector2 btnSize = new Vector2(btnWidth, btnHeight);
             Rect btnRect = new Rect(btnPos, btnSize);
-            GUI.Button(btnRect, "回到首页", m_buttonStyle.Value);
+            if ( GUI.Button(btnRect, "回到首页", m_buttonStyle.Value))
+            {
+                SceneManager.LoadScene("GameStart");
+            }
         }
     }
 }

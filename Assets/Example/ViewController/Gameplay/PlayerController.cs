@@ -28,14 +28,27 @@ namespace ShootingEditor2D
 
         private void FixedUpdate()
         {
-            float horizontalMove = Input.GetAxis("Horizontal");
-            m_Rigidbody.velocity = new Vector2(horizontalMove * 5, m_Rigidbody.velocity.y);
+            var horizontalMovement = Input.GetAxis("Horizontal");
 
-            if (isJump && triggerCheck.IsTrigger)
+            if (horizontalMovement < 0 && transform.localScale.x > 0 || 
+                horizontalMovement > 0 && transform.localScale.x < 0) // +
             {
-                isJump = false;
+                var localScale =  transform.localScale;
+                localScale.x = -localScale.x;
+                transform.localScale = localScale;
+          
+            }
+
+            m_Rigidbody.velocity = new Vector2(horizontalMovement * 5, m_Rigidbody.velocity.y);
+
+            var grounded = triggerCheck.IsTrigger;
+      
+            if (isJump && grounded)
+            {
                 m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, 5);
             }
+      
+            isJump = false;
         }
     }
 }

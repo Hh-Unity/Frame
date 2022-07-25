@@ -11,6 +11,7 @@ namespace ShootingEditor2D
         {   
             this.RegisterModel<IPlayerModel>(new PlayerModel());
             this.RegisterSystem<IStateSystem>(new StateSystem());
+            this.RegisterSystem<IGunSystem>(new GunSystem());
         }
     }
 

@@ -16,7 +16,7 @@ namespace ShootingEditor2D
 
         private void Start()
         {
-            m_rigidbody.velocity = Vector2.right * 10;
+            m_rigidbody.velocity = Vector2.right * 10 * Mathf.Sign(transform.localScale.x);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -25,6 +25,7 @@ namespace ShootingEditor2D
             {
                 this.SendCommand<KillEnemyCommand>();
                 Destroy(other.gameObject);
+                Destroy(gameObject);
             }
         }
 
