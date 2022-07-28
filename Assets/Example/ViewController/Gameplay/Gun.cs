@@ -18,7 +18,7 @@ namespace ShootingEditor2D
 
         public void Shoot()
         {
-            if (m_gunInfo.BulletCount.Value > 0)
+            if (m_gunInfo.BulletCountInGun.Value > 0 && m_gunInfo.State.Value == GunState.Idle)
             {
                 Transform bullet = Instantiate(m_Bullet.transform, m_Bullet.transform.position, m_Bullet.transform.rotation);
                 bullet.localScale = m_Bullet.transform.lossyScale;

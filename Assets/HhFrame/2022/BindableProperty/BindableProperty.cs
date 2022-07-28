@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace HFrame2022
 {
-    public class BindableProperty<T> where T : IEquatable<T>
+    public class BindableProperty<T>
     {
         public T mValue;
         public Action<T> m_OnValueChanged = (v) => { };
@@ -17,7 +17,7 @@ namespace HFrame2022
             }
             set
             {
-                if (!mValue.Equals(value))
+                if (!value.Equals(mValue))
                 {
                     mValue = value;
                     m_OnValueChanged?.Invoke(mValue);
@@ -41,7 +41,7 @@ namespace HFrame2022
         }
     }
 
-    public class BindablePropertyUnRegister<T> : IUnRegister where T : IEquatable<T>
+    public class BindablePropertyUnRegister<T> : IUnRegister
     {
         public BindableProperty<T> BindableProperty { get; set; }
         public Action<T> OnValueChanged { get; set; }
