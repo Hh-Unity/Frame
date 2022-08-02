@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 namespace HFrame2022
@@ -20,6 +21,7 @@ namespace HFrame2022
         void SendEvent<T>(T e);
         IUnRegister RegisterEvent<T>(Action<T> onEvent);
         void UnRegisterEvent<T>(Action<T> onEvent);
+        T SendQuery<T>(IQuery<T> query);
     }
 }
 

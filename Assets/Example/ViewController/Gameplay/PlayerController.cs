@@ -24,6 +24,8 @@ namespace ShootingEditor2D
                 isJump = true;
             if (Input.GetKeyDown(KeyCode.J))
                 gun.Shoot();
+            if (Input.GetKeyDown(KeyCode.R))
+                gun.Reload();
         }
 
         private void FixedUpdate()

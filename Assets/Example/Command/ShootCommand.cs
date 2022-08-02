@@ -18,6 +18,8 @@ namespace ShootingEditor2D
             timeSystem.AddDelayTask(1 / configItem.Frequency, () =>
             {
                 gunSystem.CurrentGun.State.Value = GunState.Idle;
+                if (gunSystem.CurrentGun.BulletCountInGun.Value == 0 && gunSystem.CurrentGun.BulletCountOutGun.Value > 0)
+                    this.SendCommand<ReloadCommand>();
             });
         }
     }

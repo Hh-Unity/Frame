@@ -136,6 +136,12 @@ namespace HFrame2022
             mTypeEventSystem.UnRegister<T>(onEvent);
         }
 
+        public T SendQuery<T>(IQuery<T> query)
+        {
+            query.SetSetArchitecture(this);
+            return query.Do();
+        }
+
         public static void Clear()
         {
             mArchitecture = null;
