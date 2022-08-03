@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HFrame2022;
 using UnityEngine;
 
 namespace ShootingEditor2D
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : ShootingEditor2DController
     {
         private Rigidbody2D m_Rigidbody;
         private TriggerCheck triggerCheck;
@@ -26,6 +27,10 @@ namespace ShootingEditor2D
                 gun.Shoot();
             if (Input.GetKeyDown(KeyCode.R))
                 gun.Reload();
+            if (Input.GetKeyDown(KeyCode.P))
+                this.SendCommand(new PickGunCommand("冲锋枪", 30, 100));
+            if (Input.GetKeyDown(KeyCode.Q))
+                this.SendCommand<ShiftGunCommand>();
         }
 
         private void FixedUpdate()

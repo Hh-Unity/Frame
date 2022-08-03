@@ -18,6 +18,10 @@ namespace ShootingEditor2D
             m_playerModel = this.GetModel<IPlayerModel>();
             m_gunSystem = this.GetSystem<IGunSystem>();
             m_maxBulletCount = this.SendQuery(new MaxBulletCountQuery(m_gunSystem.CurrentGun.Name.Value));
+            this.RegisterEvent<OnCurrentGunChanged>(e =>
+            {
+                m_maxBulletCount = this.SendQuery(new MaxBulletCountQuery(e.Name));
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
         private readonly Lazy<GUIStyle> mLabelStyle = new Lazy<GUIStyle>(() => new GUIStyle(GUI.skin.label)

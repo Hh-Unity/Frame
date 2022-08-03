@@ -6,18 +6,14 @@ using UnityEngine;
 
 namespace ShootingEditor2D
 {
-    public class AttackPlayer : MonoBehaviour,IController
+    public class AttackPlayer : ShootingEditor2DController
     {
         private void OnCollisionEnter2D(Collision2D other)
         {
             if(other.gameObject.CompareTag("Player"))
                 this.SendCommand<HurtPlayerCommand>();
         }
-
-        public IArchitecture GetArchitecture()
-        {
-            return ShootingEditor2D.Interface;
-        }
+        
     }
 }
 
